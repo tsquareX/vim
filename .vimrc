@@ -21,8 +21,7 @@ set textwidth=120
 nmap <F11> 1G=G
 nmap F11 <ESC>1G=Ga
 map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+qf .<CR>
-"map <F1> :ta %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
-
+map <C-F11> :set tags=
 
 "tags setup
 function! BuildTagfileList()
@@ -36,6 +35,7 @@ tags_opt = vim.eval("&tags")
 tags_opt = "set tags=tags"
 for tagfile in tagfiles:
     tags_opt += ",%s" % tagfile
+
 vim.command(tags_opt)
 EOF
 endfunction
@@ -78,6 +78,11 @@ endfunction
 function! PutPythonCopyrightTemplate()
     "put doxygen file template
     r~/.vim/templates/doxygen-python-copyright
+endfunction
+
+function! PutCmakeCopyrightTemplate()
+    "put doxygen file template
+    r~/.vim/templates/doxygen-cmake-copyright
 endfunction
 
 function! PutCFuncTemplate()
@@ -202,9 +207,12 @@ endif
 "
 " FSwitch setup
 "
-au! BufEnter *.cpp let b:fswitchdst = 'h,hpp' | let b:fswitchlocs = 'rel:.,../local,../public'
-au! BufEnter *.h* let b:fswitchdst = 'cpp,c' | let b:fswitchlocs = 'rel:.,../local,../public'
+au! BufEnter *.cpp let b:fswitchdst = 'h,hpp' | let b:fswitchlocs = 'rel:.,../local/**,../public/**,../../local/**,../../public/**'
+au! BufEnter *.h* let b:fswitchdst = 'cpp,c' | let b:fswitchlocs = 'rel:.,../local/**,../public/**,../../local/**,../../public/**'
+"au! BufEnter *.h* let b:fswitchdst = 'cpp,c' | let b:fswitchlocs = 'rel:.,../local,../local/*../public,../public/*,../../public,../../public/*,../../local,../../local/*'
 map <F1> :FSHere<CR>
 :let g:fsnonewfiles=1
 
-source $VIMRUNTIME/mswin.vim
+"
+" Disable the obnoxious bell, and just flash.
+set vb
