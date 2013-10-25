@@ -1,3 +1,4 @@
+execute pathogen#infect()
 set nocompatible
 colorscheme torte
 set nowrap
@@ -5,7 +6,7 @@ set ignorecase
 set smartcase
 set incsearch
 set smartcase  " ignore case, unless I dont want to
-execute pathogen#infect()
+
 syntax on
 filetype on
 filetype plugin indent on
@@ -21,7 +22,6 @@ set textwidth=120
 nmap <F11> 1G=G
 nmap F11 <ESC>1G=Ga
 map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+qf .<CR>
-map <C-F11> :set tags=
 
 "tags setup
 function! BuildTagfileList()
@@ -111,7 +111,7 @@ set guioptions-=T
 set guioptions+=m
 
 "Update vim path with additional system includes
-"set path+=/usr/lib/pymodules/python2.6/**,/usr/lib/python2.6/dist-packages/**
+"set path+=/usr/lib/pymodules/python2.x/**,/usr/lib/python2.x/dist-packages/**
 "Setup python paths to enable gf command
 python << EOF
 import os
@@ -166,8 +166,7 @@ inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
 inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
   \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
-
-hi Pmenu guibg=brown gui=bold
+hi Pmenu guibg=yellow guifg=blue gui=bold
 
 " Make it easy to update vimrc
 :nmap ,s :source ~/.vimrc<CR>
@@ -192,7 +191,7 @@ match OverLength /\%121v.\+/
 " ctrl-p operation
 :let g:ctrlp_match_window_bottom = 0 " put match window at top
 :let g:ctrlp_match_window_reversed = 0
-:let g:cstrp_custom_ignore = '\v\-$|\.(o|swp|pyc|.dblite)$|(^|[/\\])\.(hg|git|bzr)'
+:let g:cstrp_custom_ignore = '\v\-$|\.(o|swp|pyc)$|(^|[/\\])\.(hg|git|bzr|svn)'
 :let g:ctrlp_working_path_mode = 0
 :let g:ctrlp_dotfiles = 0
 :let g:ctrlp_switch_buffer = 0
