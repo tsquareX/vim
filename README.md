@@ -9,6 +9,6 @@ To use :
 ```
 cd ~
 git clone https://github.com/baringforge/vim.git
-ln -s vim .vim
+ln -s vim/.vim .vim
 ln -s vim/.vimrc .vimrc
 ```
