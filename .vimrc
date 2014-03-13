@@ -1,6 +1,6 @@
 execute pathogen#infect()
 set nocompatible
-colorscheme torte
+colorscheme desert256
 set nowrap
 set ignorecase
 set smartcase
