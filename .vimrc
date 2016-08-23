@@ -15,8 +15,8 @@ filetype plugin indent on
 set smartindent  
 filetype indent on
 set expandtab
-set sts=3
-set shiftwidth=3
+set sts=4
+set shiftwidth=4
 set textwidth=120
 "shortcut to indent entire file
 nmap <F11> 1G=G
